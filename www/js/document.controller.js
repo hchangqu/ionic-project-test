@@ -29,17 +29,6 @@ function DocumentController($scope, $ionicModal, InvoiceService) {
                         });
     };
 
-    vm.goPrevious = function () {
-        if($scope.pageModel > 1){
-            $scope.pageModel--;
-        }
-    };
-
-    vm.goNext = function () {
-        console.log("oi")
-        $scope.pageModel++;
-    };
-
     // Clean up the modal view.
     $scope.$on('$destroy', function () {
         vm.modal.remove();
@@ -50,7 +39,7 @@ function DocumentController($scope, $ionicModal, InvoiceService) {
 
 function setDefaultsForPdfViewer($scope) {  
     $scope.scroll = 0;
-    $scope.pageModel = 1;
+    $scope.pageToDisplay = 1;
     $scope.loading = 'loading';
 
     $scope.onError = function (error) {
@@ -63,6 +52,19 @@ function setDefaultsForPdfViewer($scope) {
 
     $scope.onProgress = function (progress) {
         console.log(progress);
+    };
+
+    $scope.goPrevious = function () {
+        if($scope.pageToDisplay > 1){
+            $scope.pageToDisplay--;
+            $scope.pdfUrl = '/assets/pdf-test.pdf';
+        }
+    };
+
+    $scope.goNext = function () {
+        console.log("oi")
+        $scope.pageToDisplay++;
+        $scope.pdfUrl = '/assets/pdf-test.pdf';
     };
 }
 

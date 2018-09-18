@@ -62,14 +62,7 @@
         <button ng-click="vm.modal.hide()" class="button button-icon icon ion-android-close"></button>
     </ion-header-bar>
     <ion-content>
-        <nav ng-class="getNavStyle(scroll)">
-            <button ion-button ng-click="goPrevious()"><span>&lt;</span></button>
-            <button ion-button ng-click="goNext()"><span>&gt;</span></button>
-            <span>Document URL: </span>
-            <input type="text" ng-model="pdfUrl">
-            <input type="text" ng-model="pageModel"> {{pageModel}}
-          </nav>
-        <ng-pdf ng-if="pdfUrl" template-url="partials/viewer.html" canvasid="pdf" scale="page-fit"  usecredentials="true" ></ng-pdf>  
+        <ng-pdf ng-if="pdfUrl" template-url="partials/viewer.html" canvasid="pdf" scale="page-fit" usecredentials="true" page = "pageToDisplay"></ng-pdf>  
     </ion-content>
     </ion-modal-view>
 </script>  
